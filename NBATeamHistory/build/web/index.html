@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+        <script type="text/javascript">
+           function specSearch(){
+               var wordSearch = document.getElementById('search').value.trim();
+               $.ajax({
+                   url:"specSearch.jsp",
+                   data:"searchKey="+wordSearch,
+                   dataType: "text",
+                   success: function(serverdata)
+                   {
+                       $("#displayresult").html(serverdata);
+                   }
+               })
+           } 
+           function allTeam(){
+               var wordSearch = document.getElementById('search').value.trim();
+               $.ajax({
+                   url:"allTeam.jsp",
+                   data:"searchKey="+wordSearch,
+                   dataType: "text",
+                   success: function(serverdata)
+                   {
+                       $("#displayresult").html(serverdata);
+                   }
+               })
+           } 
+           function oldestTeam(){
+               var wordSearch = document.getElementById('search').value.trim();
+               $.ajax({
+                   url:"oldestTeam.jsp",
+                   data:"searchKey="+wordSearch,
+                   dataType: "text",
+                   success: function(serverdata)
+                   {
+                       $("#displayresult").html(serverdata);
+                   }
+               })
+               
+           } 
+           function youngestTeam(){
+               var wordSearch = document.getElementById('search').value.trim();
+               $.ajax({
+                   url:"youngestTeam.jsp",
+                   data:"searchKey="+wordSearch,
+                   dataType: "text",
+                   success: function(serverdata)
+                   {
+                       $("#displayresult").html(serverdata);
+                   }
+               })
+               
+           }
+         </script>
+    </head>
+    <body>
+        <h2> NBA Team History Database</h2>
+        Please enter the name of the team that you want to search up: 
+        <input type="text" id="search"/>
+        <button type="button" id="specSearch" onclick="specSearch()">Search</button>
+        </br>
+        <button type="button" id="allTeams" onclick='allTeam()'>List All Teams </button>
+        <button type="button" id="oldestTeam" onclick="oldestTeam()">List Oldest Teams</button>
+        <button type="button" id="youngestTeam" onclick="youngestTeam()">List Youngest Teams</button>
+        <p></p>
+        <div id="displayresult"></div>
+    </body>
+</html>
